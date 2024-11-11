@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ใบเสนอราคา</title>
+    <link rel="stylesheet" href="styledisplay.css">
+</head>
+<body>
+    <div class="quotation-container">
+        <div class="header">
+            <div class="logo">
+                <!-- <p>ทำกรอบไว้สำหรับใส่โลโก้</p> -->
+                 <img src="Newlogo2.png" alt="" width="125%">
+            </div>
+            <div class="title">
+                <h1>ทีมงานนักออกแบบลงพุง</h1>
+                <p>ผู้ให้บริการ: นักออกแบบลงพุง</p>
+                <p>ที่อยู่การให้บริการ: ให้บริการออกแบบออนไลน์ทั่วประเทศ</p>
+                <p>เบอร์ติดต่อ: <span id="providerPhone"></span></p>
+                <p>อีเมลล์: endproject123@gmail.com</p>
+            </div>
+            <div class="quotation-section">
+                <div class="quotation-title">
+                    <h2>ใบเสนอราคา</h2>
+                </div>
+                <div class="quotation-info">
+                    <p>ใบเสนอราคา เลขที่: <span id="quotationNumber">null</span></p>
+                    <p>วันที่ออกใบเสนอราคา: <span id="currentDate">null</span></p>
+                    <p>เวลา: <span id="currentTime">null</span></p>
+                </div>
+            </div>
+            
+            
+        </div>
+
+        <div class="client-info">
+            <p>ผู้รับบริการ: <span id="clientName"></span></p>
+        </div>
+
+        <div class="details-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>รายละเอียด</th>
+                        <th>จำนวนงาน (หน่วย)</th>
+                        <th>ระยะเวลา (วัน)</th>
+                        <th>ราคา (บาท)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span id="jobDetails"></span></td>
+                        <td><span id="jobAmount"></span></td>
+                        <td><span id="deadline"></span></td>
+                        <td><span id="totalCost"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- <div class="total-info">
+            <p>ยอดรวม: <span id="totalCostText">null</span> (THB)</p>
+            <p>ส่วนลด: <span id="discountText">null</span> (THB)</p>
+            <hr>
+            <p>ยอดรวมทั้งหมด</p>
+            <h2><span id="finalTotal">Null</span> THB</h2>
+            <p>แบ่งชำระมัดจำ งวดละ</p>
+            <h3><span id="halfTotal">Null</span> THB</h3>
+            <p>(ชำระมัดจำภายใน 7 วัน)</p>
+        </div>
+        
+
+        <div class="notes">
+            <h2>เงื่อนไขและข้อกำหนด</h2>
+            <ol>
+                <li>กรุณาชำระมัดจำภายใน 7 วันนับจากวันที่ได้รับใบเสนอราคา</li>
+                <li>ยอดคงเหลือ 50% ต้องชำระเมื่อลูกค้าตรวจสอบงานเรียบร้อยแล้วก่อนส่งงาน</li>
+                <li>ลูกค้าสามารถขอแก้ไขงานในขอบเขตของรายละเอียดงานที่ระบุไว้ได้ทั้งหมด 2 ครั้ง (สองครั้ง)</li>
+                <li>การชำระมัดจำไม่สามารถขอคืนได้ หากลูกค้ายกเลิกการใช้บริการนอกเงื่อนไขที่ตกลงไว้</li>
+            </ol>
+        </div> -->
+
+        <div class="flex-container">
+            <div class="notes">
+                <h2>เงื่อนไขและข้อกำหนด</h2>
+                <ol>
+                    <li>กรุณาชำระมัดจำภายใน 7 วันนับจากวันที่ได้รับใบเสนอราคา</li>
+                    <li>ยอดคงเหลือ 50% ต้องชำระเมื่อลูกค้าตรวจสอบงานเรียบร้อยแล้วก่อนส่งงาน</li>
+                    <li>ลูกค้าสามารถขอแก้ไขงานในขอบเขตของรายละเอียดงานที่ระบุไว้ได้ทั้งหมด 2 ครั้ง (สองครั้ง)</li>
+                    <li>การชำระมัดจำไม่สามารถขอคืนได้ หากลูกค้ายกเลิกการใช้บริการนอกเงื่อนไขที่ตกลงไว้</li>
+                </ol>
+            </div>
+        
+            <div class="total-info">
+                <p>ยอดรวม: <span id="totalCostText">null</span> (THB)</p>
+                <p>ส่วนลด: <span id="discountText">null</span> (THB)</p>
+                <hr class="theline">
+                <p>ยอดรวมทั้งหมด</p>
+                <h2><span id="finalTotal">Null</span> THB</h2>
+                <hr class="theline2">
+                <p>แบ่งชำระมัดจำ งวดละ</p>
+                <h3><span id="halfTotal">Null</span> THB</h3>
+                <p>(ชำระมัดจำภายใน 7 วัน)</p>
+            </div>
+        </div>
+
+        
+        <div class="payment-details">
+            <div class="payment-text">
+                <h2>วิธีการชำระเงิน</h2>
+                <p>ธนาคารกสิกรไทย Kasikornbank | ชื่อบัญชี: พีรภัทร เครื่องคำ | เลขที่บัญชี: 098-8-950637</p>
+            </div>
+            <div class="qr-code">
+                <img src="qrcode.png" width="150px">
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('quotationNumber').textContent = sessionStorage.getItem('quotationNumber');
+            document.getElementById('currentDate').textContent = sessionStorage.getItem('currentDate');
+            document.getElementById('currentTime').textContent = sessionStorage.getItem('currentTime');
+            document.getElementById('providerPhone').textContent = sessionStorage.getItem('providerPhone');
+            document.getElementById('clientName').textContent = sessionStorage.getItem('clientName');
+            document.getElementById('jobDetails').textContent = sessionStorage.getItem('jobDetails');
+            document.getElementById('jobAmount').textContent = sessionStorage.getItem('jobAmount');
+            document.getElementById('deadline').textContent = sessionStorage.getItem('deadline');
+    
+            // เพิ่มคำว่า "บาท" หลังราคาที่รับมา
+            const totalCost = parseFloat(sessionStorage.getItem('totalCost')) || 0;
+            document.getElementById('totalCost').textContent = `${totalCost.toFixed(0)} บาท`;
+    
+            // ดึงข้อมูลส่วนลด
+            const discount = parseFloat(sessionStorage.getItem('discount')) || 0;
+    
+            // คำนวณยอดรวมหลังหักส่วนลด
+            const finalTotal = totalCost - discount;
+    
+            // คำนวณยอดแบ่งชำระมัดจำ
+            const halfTotal = finalTotal / 2;
+    
+            // แสดงผลข้อมูลยอดรวม, ส่วนลด, และยอดแบ่งชำระ
+            if (document.getElementById('totalCostText')) {
+                document.getElementById('totalCostText').textContent = `${totalCost.toFixed(0)}`;
+            }
+            if (document.getElementById('discountText')) {
+                document.getElementById('discountText').textContent = `${discount.toFixed(2)}`;
+            }
+            if (document.getElementById('finalTotal')) {
+                document.getElementById('finalTotal').textContent = `${finalTotal.toFixed(2)}`;
+            }
+            if (document.getElementById('halfTotal')) {
+                document.getElementById('halfTotal').textContent = `${halfTotal.toFixed(2)}`;
+            }
+        });
+    </script>
+    
+    
+    
+    
+</body>
+</html>

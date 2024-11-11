@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กรอกข้อมูล</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <h1>ใบเสนอราคานักออกแบบลงพุง</h1>
+        <form onsubmit="saveData(); return false;">
+            <div class="form-section">
+                <div class="form-group">
+                    <h2>ข้อมูลผู้ให้บริการ</h2>
+                    <label>เบอร์ติดต่อ:</label>
+                    <input type="text" id="providerPhone" placeholder="กรอกเบอร์ติดต่อ (เบอร์ติดต่อเรา)" required>
+                </div>
+                <div class="form-group">
+                    <h2>ข้อมูลผู้รับบริการ</h2>
+                    <label>ชื่อลูกค้า:</label>
+                    <input type="text" id="clientName" placeholder="กรอกชื่อผู้รับบริการ (ใส่ชื่อจริงลูกค้า)" required>
+                </div>
+            </div>
+            <div class="form-section">
+                <h2>รายละเอียดงาน</h2>
+                <textarea id="jobDetails" placeholder="กรอกรายละเอียดงาน (กรอกให้ครบถ้วนที่สุด)" required></textarea>
+            </div>
+            <div class="form-section form-group-inline">
+                <div class="form-group">
+                    <label>จำนวนงาน:</label>
+                    <input type="number" id="jobAmount" placeholder="กรอกจำนวนงาน" required>
+                </div>
+                <div class="form-group">
+                    <label>กำหนดระยะเวลา:</label>
+                    <input type="number" id="deadline" placeholder="คิดว่าทำงานเสร็จภายในกี่วัน (หากมีคิวก่อนหน้าให้บวกวันเพิ่มเผื่อด้วย)" required>
+                </div>
+                <div class="form-group">
+                    <label>รวมค่าบริการทั้งสิ้น:</label>
+                    <input type="number" id="totalCost" placeholder="ใส่จำนวนเงิน" required>
+                </div>
+                <!-- <div class="form-group">
+                    <label>มัดจำ 50%:</label>
+                    <input type="number" id="deposit" placeholder="ใส่จำนวนเงิน" required>
+                </div> -->
+                <div class="form-group">
+                    <label>ส่วนลด:</label>
+                    <input type="number" id="discount" placeholder="ใส่ราคาที่จะลด" required>
+                </div>
+            </div>
+            <button type="submit">ยืนยันข้อมูล</button>
+        </form>
+    </div>
+
+    <script>
+        function saveData() {
+            const providerPhone = document.getElementById('providerPhone').value;
+            const clientName = document.getElementById('clientName').value;
+            const jobDetails = document.getElementById('jobDetails').value;
+            const jobAmount = document.getElementById('jobAmount').value;
+            const deadline = document.getElementById('deadline').value;
+            const totalCost = document.getElementById('totalCost').value;
+            
+            const discount = document.getElementById('discount').value; // ดึงข้อมูลส่วนลดจากฟิลด์
+    
+            // เก็บข้อมูลลงใน sessionStorage
+            sessionStorage.setItem('providerPhone', providerPhone);
+            sessionStorage.setItem('clientName', clientName);
+            sessionStorage.setItem('jobDetails', jobDetails);
+            sessionStorage.setItem('jobAmount', jobAmount);
+            sessionStorage.setItem('deadline', deadline);
+            sessionStorage.setItem('totalCost', totalCost);
+            
+            sessionStorage.setItem('discount', discount); // เก็บข้อมูลส่วนลดลงใน sessionStorage
+    
+            // สร้างเลขที่ใบเสนอราคาพร้อมวันที่และเวลา
+            const currentDate = new Date();
+            const day = currentDate.getDate();
+            const month = currentDate.getMonth() + 1; // เดือนใน JavaScript เริ่มจาก 0
+            const year = currentDate.getFullYear();
+            const hours = String(currentDate.getHours()).padStart(2, '0'); // เพิ่ม 0 ข้างหน้าให้เป็น 2 หลักถ้าตัวเลขน้อยกว่า 10
+            const minutes = String(currentDate.getMinutes()).padStart(2, '0'); // เพิ่ม 0 ข้างหน้าให้เป็น 2 หลักถ้าตัวเลขน้อยกว่า 10
+    
+            const quotationNumber = `${day}A${month}${hours}${minutes}/${year}`;
+    
+            const formattedDate = currentDate.toLocaleDateString('th-TH');
+            const formattedTime = currentDate.toLocaleTimeString('th-TH');
+    
+            sessionStorage.setItem('quotationNumber', quotationNumber);
+            sessionStorage.setItem('currentDate', formattedDate);
+            sessionStorage.setItem('currentTime', formattedTime);
+    
+            // เปลี่ยนไปยังหน้าถัดไป
+            window.location.href = 'display.html';
+        }
+    </script>
+    
+</body>
+</html>
